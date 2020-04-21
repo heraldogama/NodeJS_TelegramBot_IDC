@@ -1,7 +1,3 @@
-/**
- * Aqui eu recebo os parametros de conexão com o DB baseados nas
- * informações do .ENV (onde estão os valores das variáveis de ambiente)
- */
 const dotenv = require('dotenv');
 
 dotenv.config({
@@ -16,7 +12,6 @@ module.exports = {
     port: process.env.PROD_DB_PORT,
     define: {
         timestamps: true,
-        // habilitar o uso do UNDERLINE no formato de nome das colulas (user_group) 22:30
         underscored: true,
     },
 };

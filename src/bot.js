@@ -30,7 +30,6 @@ bot.on('inline_query', async ({
     const queryLength = inlineQuery.query.length;
     if (queryLength >= 4) {
         try {
-            // const offset = parseInt(inlineQuery.offset) || 0;
             const offSet = inlineQuery.offset;
             let nextOffSet = offSet;
             console.log("Query usuário: " + inlineQuery.query);
@@ -44,40 +43,28 @@ bot.on('inline_query', async ({
             });
             let listCid = response;
             console.log(`*** Array listCID com ${listCid.length} elementos.`);
-            // const nextoffset = 40;
             if (offSet === '') {
                 console.log(`OFFSET inicial: ${offSet}`);
-                if (listCid.length > 50) {
-                    console.log('Numero de ítens > 50');
-                    nextOffSet = parseInt(offSet) + 50;
-                    listCid = listCid.slice(parseInt(offSet), nextOffSet);
-                    // const pos = offSet;
-                    // const nextOffSet = 40;
-                    // // const n = offSet + nextOffSet;
-                    // // listCid = response.slice(pos, n);
-                    // if (offSet <= listCid.length) {
-                    //     n = offSet + nextOffSet;
-                    // } else if (offSet > listCid.length) {
-                    //     n = offSet - (nextOffSet - listCid.length);
-                    //     nextOffSet = '';
-                    //     offSet = '';
-                    // };
-                    // console.log('Valor de pos: ' + pos);
-                    // console.log('Valor de n: ' + n);
-                    // listCid = response.slice(pos, n);
-                } else if (listCid.length <= 50) {
-                    console.log('Numero de ítens <= 50');
-                    nextOffSet = offSet;
-                    listCid = listCid.slice(0, listCid.length);
-                };
+                // if (listCid.length > 50) {
+                //     console.log('Numero de ítens > 50');
+                //     // nextOffSet = parseInt(offSet) + 50;
+                //     // nextOffSet = offSet;
+                //     nextOffSet = offSet;
+                //     listCid = listCid.slice(parseInt(offSet), nextOffSet);
+                // } else if (listCid.length <= 50) {
+                console.log('Numero de ítens <= 50');
+                // nextOffSet = offSet;
+                nextOffSet = '50';
+                // listCid = listCid.slice(0, listCid.length);
+                listCid = listCid.slice(0, 50);
+                // };
             } else if (offSet != '') {
                 console.log('cheguei no ELSE IF');
-                console.log(`Este é o valor de OFFSET: ${offSet}`);
+                console.log(`Este é o valor de OFFSET: ${offSet} do tipo: ${typeof offSet}`);
                 nextOffSet = parseInt(offSet) + 50;
                 listCid = listCid.slice(parseInt(offSet), parseInt(nextOffSet));
             };
             const recipes = listCid.map(({
-                // const recipes = response.map(({
                 subcat,
                 descricao
             }) => ({
@@ -89,7 +76,6 @@ bot.on('inline_query', async ({
                     message_text: subcat + " " + descricao
                 },
             }));
-
             return answerInlineQuery(JSON.stringify(recipes), {
                 cache_time: 10,
                 is_personal: true,
