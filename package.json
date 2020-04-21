@@ -1,0 +1,23 @@
+{
+  "name": "TelegramBotIDC",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:heraldogama/NodeJS_TelegramBot_IDC.git",
+  "author": "Heraldo Gama <heraldogama@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "bot": "nodemon src/bot.js"
+  },
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "pg": "^8.0.2",
+    "pg-hstore": "^2.3.3",
+    "sequelize": "^5.21.6",
+    "telegraf": "^3.37.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.3",
+    "sequelize-cli": "^5.5.1"
+  }
+}
