@@ -45,19 +45,9 @@ bot.on('inline_query', async ({
             console.log(`*** Array listCID com ${listCid.length} elementos.`);
             if (offSet === '') {
                 console.log(`OFFSET inicial: ${offSet}`);
-                // if (listCid.length > 50) {
-                //     console.log('Numero de ítens > 50');
-                //     // nextOffSet = parseInt(offSet) + 50;
-                //     // nextOffSet = offSet;
-                //     nextOffSet = offSet;
-                //     listCid = listCid.slice(parseInt(offSet), nextOffSet);
-                // } else if (listCid.length <= 50) {
                 console.log('Numero de ítens <= 50');
-                // nextOffSet = offSet;
                 nextOffSet = '50';
-                // listCid = listCid.slice(0, listCid.length);
                 listCid = listCid.slice(0, 50);
-                // };
             } else if (offSet != '') {
                 console.log('cheguei no ELSE IF');
                 console.log(`Este é o valor de OFFSET: ${offSet} do tipo: ${typeof offSet}`);
