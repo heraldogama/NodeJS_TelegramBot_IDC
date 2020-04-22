@@ -2,7 +2,6 @@ const Cid = require('../models/Subcat');
 const {
     Op
 } = require('sequelize');
-// const Telegraf = require('telegraf');
 const dotenv = require('dotenv');
 dotenv.config({
     path: process.env.NODE_ENV === "test" ? ".env.testing" : ".env"
