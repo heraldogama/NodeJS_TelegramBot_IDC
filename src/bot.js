@@ -23,15 +23,20 @@ bot.telegram.getMe().then((bot_informations) => {
     console.log("Server has initialized bot nickname. Nick: " + bot_informations.username);
 });
 
+var result_Id = 0;
+
 bot.on('inline_query', async ({
     inlineQuery,
     answerInlineQuery
 }) => {
     const queryLength = inlineQuery.query.length;
+
     if (queryLength >= 4) {
         try {
             const offSet = inlineQuery.offset;
+            // const resultId = inlineQuery.result_id;
             let nextOffSet = offSet;
+            // let result_Id;
             console.log("Query usuário: " + inlineQuery.query);
             const response = await Cid.findAll({
                 attributes: ["subcat", "descricao"],
@@ -46,13 +51,17 @@ bot.on('inline_query', async ({
             if (offSet === '') {
                 console.log(`OFFSET inicial: ${offSet}`);
                 console.log('Numero de ítens <= 50');
+                // result_Id = 0;
                 nextOffSet = '50';
                 listCid = listCid.slice(0, 50);
+                console.log('Conteúdo offset==null result_id:' + result_Id)
             } else if (offSet != '') {
                 console.log('cheguei no ELSE IF');
                 console.log(`Este é o valor de OFFSET: ${offSet} do tipo: ${typeof offSet}`);
                 nextOffSet = parseInt(offSet) + 50;
+                result_Id++;
                 listCid = listCid.slice(parseInt(offSet), parseInt(nextOffSet));
+                console.log('Conteúdo offset<>null do result_Id:' + result_Id)
             };
             const recipes = listCid.map(({
                 subcat,
@@ -67,6 +76,8 @@ bot.on('inline_query', async ({
                 },
             }));
             return answerInlineQuery(JSON.stringify(recipes), {
+                // inline_query_id: resultId.toString(),
+                result_id: result_Id,
                 cache_time: 10,
                 is_personal: true,
                 next_offset: nextOffSet,
