@@ -56,7 +56,7 @@ bot.on("inline_query", async ({
         // result_Id = 0;
         nextOffSet = "50";
         listCid = listCid.slice(0, 50);
-        console.log("Conteúdo offset==null result_id:" + result_Id);
+        // console.log("Conteúdo offset==null result_id:" + result_Id);
       } else if (offSet != "") {
         console.log("cheguei no ELSE IF");
         console.log(
@@ -65,7 +65,7 @@ bot.on("inline_query", async ({
         nextOffSet = parseInt(offSet) + 50;
         // result_Id = 1;
         listCid = listCid.slice(parseInt(offSet), parseInt(nextOffSet));
-        console.log("Conteúdo offset<>null do result_Id:" + result_Id);
+        // console.log("Conteúdo offset<>null do result_Id:" + result_Id);
       }
       const recipes = listCid.map(({
         subcat,
