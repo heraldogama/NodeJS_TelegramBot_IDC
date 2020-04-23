@@ -25,7 +25,7 @@ bot.telegram.getMe().then((bot_informations) => {
   );
 });
 
-var result_Id = 0;
+// var result_Id = 0;
 
 bot.on("inline_query", async ({
   inlineQuery,
@@ -63,7 +63,7 @@ bot.on("inline_query", async ({
           `Este é o valor de OFFSET: ${offSet} do tipo: ${typeof offSet}`
         );
         nextOffSet = parseInt(offSet) + 50;
-        result_Id = 1;
+        // result_Id = 1;
         listCid = listCid.slice(parseInt(offSet), parseInt(nextOffSet));
         console.log("Conteúdo offset<>null do result_Id:" + result_Id);
       }
@@ -81,7 +81,7 @@ bot.on("inline_query", async ({
       }));
       return answerInlineQuery(JSON.stringify(recipes), {
         // inline_query_id: resultId.toString(),
-        result_id: result_Id++,
+        // result_id: result_Id++,
         cache_time: 10,
         is_personal: true,
         next_offset: nextOffSet,
