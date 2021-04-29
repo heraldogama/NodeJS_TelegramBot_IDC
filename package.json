@@ -6,7 +6,8 @@
   "author": "Heraldo Gama <heraldogama@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "bot": "nodemon src/bot.js"
+    "bot": "nodemon src/bot.js",
+    "prod": "node src/bot.js"
   },
   "dependencies": {
     "dotenv": "^8.2.0",
